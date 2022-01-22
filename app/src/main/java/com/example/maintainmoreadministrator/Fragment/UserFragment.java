@@ -23,13 +23,13 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 
-public class UsersFragment extends Fragment {
+public class UserFragment extends Fragment {
 
     RecyclerView recyclerView_Users;
 
     FirebaseFirestore db;
 
-    public UsersFragment() {
+    public UserFragment() {
         // Required empty public constructor
     }
 
@@ -39,7 +39,7 @@ public class UsersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_users, container, false);
+        View view = inflater.inflate(R.layout.fragment_user, container, false);
 
         db = FirebaseFirestore.getInstance();
 
@@ -47,22 +47,19 @@ public class UsersFragment extends Fragment {
 
         ArrayList<UserModal> userModals = new ArrayList<>();
 
-        db.collection("Users").addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                userModals.clear();
-                assert value != null;
-                for (DocumentSnapshot snapshot: value){
-                    userModals.add(new UserModal(snapshot.getString("name"), snapshot.getString("email")
-                            ,snapshot.getString("imageUrl")));
-                }
-                UserAdapter userAdapter = new UserAdapter(userModals,getContext());
-                recyclerView_Users.setAdapter(userAdapter);
-
-                LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-                recyclerView_Users.setLayoutManager(linearLayoutManager);
-
+        db.collection("Users").addSnapshotListener((value, error) -> {
+            userModals.clear();
+            assert value != null;
+            for (DocumentSnapshot snapshot: value){
+                userModals.add(new UserModal(snapshot.getString("name"), snapshot.getString("email")
+                        ,snapshot.getString("imageUrl")));
             }
+            UserAdapter userAdapter = new UserAdapter(userModals,getContext());
+            recyclerView_Users.setAdapter(userAdapter);
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+            recyclerView_Users.setLayoutManager(linearLayoutManager);
+
         });
 
 
