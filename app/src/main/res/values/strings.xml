@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">MaintainMore(Administrator)</string>
+    <string name="password">Enter your Password</string>
+    <string name="email">"Enter your Email "</string>
+    <string name="login">Login</string>
+    <string name="dash_board">DashBoard</string>
+    <string name="todo">TODO</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="users">Users</string>
+    <string name="profile">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">Home Fragment</string>
+    <string name="profile_fragment">Profile Fragment</string>
+    <string name="search_fragment">Search Fragment</string>
+    <string name="users_fragment">Users Fragment</string>
+    <string name="logout">Logout</string>
+    <string name="user_name">Name</string>
+    <string name="add_services">Add Services</string>
+    <string name="personal_services">Personal Services</string>
+    <string name="home_services">Home Services</string>
+    <string name="home_appliances">Home Appliances</string>
+    <string name="add_home_appliances">Add Home Appliances</string>
+    <string name="add_personal_service">Personal Service</string>
+    <string name="service_name">Service Name</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="choose_picture">Choose Picture</string>
+    <string name="service_description">Service Description</string>
+    <string name="service_prise">Service Prise</string>
+</resources>
