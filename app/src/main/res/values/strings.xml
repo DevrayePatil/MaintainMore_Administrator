@@ -28,5 +28,8 @@
     <string name="save">Save</string>
     <string name="choose_picture">Choose Picture</string>
     <string name="service_description">Service Description</string>
-    <string name="service_prise">Service Prise</string>
+    <string name="service_price">Service Price</string>
+    <string name="service_time">Required Time</string>
+    <string name="choose_icon">Choose Icon</string>
+    <string name="choose_background_image">Choose Background Image</string>
 </resources>

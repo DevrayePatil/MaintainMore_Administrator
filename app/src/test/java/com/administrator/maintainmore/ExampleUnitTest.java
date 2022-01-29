@@ -1,4 +1,4 @@
-package com.example.maintainmoreadministrator;
+package com.administrator.maintainmore;
 
 import org.junit.Test;
 

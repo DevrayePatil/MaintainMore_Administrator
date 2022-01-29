@@ -1,4 +1,4 @@
-package com.example.maintainmoreadministrator.BottomSheetFragments;
+package com.administrator.maintainmore.BottomSheetFragments;
 
 import android.os.Bundle;
 
@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.maintainmoreadministrator.R;
+import com.administrator.maintainmore.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 

@@ -1,4 +1,4 @@
-package com.example.maintainmoreadministrator;
+package com.administrator.maintainmore;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,13 +16,13 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.example.maintainmoreadministrator.BottomSheetFragments.AddHomeAppliances;
-import com.example.maintainmoreadministrator.BottomSheetFragments.AddHomeService;
-import com.example.maintainmoreadministrator.BottomSheetFragments.AddPersonalService;
-import com.example.maintainmoreadministrator.Fragment.HomeFragment;
-import com.example.maintainmoreadministrator.Fragment.ProfileFragment;
-import com.example.maintainmoreadministrator.Fragment.SearchFragment;
-import com.example.maintainmoreadministrator.Fragment.UsersFragment;
+import com.administrator.maintainmore.BottomSheetFragments.AddHomeAppliances;
+import com.administrator.maintainmore.BottomSheetFragments.AddHomeService;
+import com.administrator.maintainmore.BottomSheetFragments.AddPersonalService;
+import com.administrator.maintainmore.Fragment.HomeFragment;
+import com.administrator.maintainmore.Fragment.ProfileFragment;
+import com.administrator.maintainmore.Fragment.SearchFragment;
+import com.administrator.maintainmore.Fragment.UsersFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 

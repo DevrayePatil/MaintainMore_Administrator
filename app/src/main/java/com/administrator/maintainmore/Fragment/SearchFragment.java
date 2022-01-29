@@ -1,4 +1,4 @@
-package com.example.maintainmoreadministrator.Fragment;
+package com.administrator.maintainmore.Fragment;
 
 import android.os.Bundle;
 
@@ -10,8 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.maintainmoreadministrator.Adapters.ServicePagerAdapter;
-import com.example.maintainmoreadministrator.R;
+import com.administrator.maintainmore.Adapters.ServicePagerAdapter;
+import com.administrator.maintainmore.R;
 import com.google.android.material.tabs.TabLayout;
 
 

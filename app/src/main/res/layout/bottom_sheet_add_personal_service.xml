@@ -10,7 +10,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -137,24 +137,24 @@
                     android:layout_marginTop="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName2"/>
+                    app:layout_constraintEnd_toStartOf="@+id/editText_serviceDescription"/>
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName2"
+                    android:id="@+id/editText_serviceDescription"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
-                    android:importantForAutofill="no"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/edit_text_background"
                     android:gravity="top"
                     android:hint="@string/service_description"
+                    android:importantForAutofill="no"
                     android:inputType="textPersonName"
-                    android:layout_marginStart="10dp"
                     android:padding="10dp"
-                    android:background="@drawable/edit_text_background"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/textView3"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                    tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -165,23 +165,23 @@
                 android:paddingTop="@dimen/normal_half_margin"
                 android:paddingBottom="@dimen/normal_half_margin"
                 app:layout_constraintTop_toBottomOf="@id/descriptionLayout"
-                app:layout_constraintBottom_toTopOf="@+id/imageLayout">
+                app:layout_constraintBottom_toTopOf="@+id/timeLayout">
 
                 <TextView
                     android:id="@+id/textViewPrise"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/service_prise"
+                    android:text="@string/service_time"
                     android:textSize="@dimen/bottom_sheet_text_size"
                     android:minWidth="150dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/editTextTextPersonName3"
+                    app:layout_constraintEnd_toStartOf="@id/editText_requiredTime"
                     />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                    android:id="@+id/editText_requiredTime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:importantForAutofill="no"
@@ -198,16 +198,85 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/imageLayout"
+            android:id="@+id/timeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/normal_half_margin"
+            android:paddingBottom="@dimen/normal_half_margin"
+            app:layout_constraintTop_toBottomOf="@id/priseLayout"
+            app:layout_constraintBottom_toTopOf="@+id/iconLayout">
+
+            <TextView
+                android:id="@+id/textViewTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/service_price"
+                android:textSize="@dimen/bottom_sheet_text_size"
+                android:minWidth="150dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/editText_servicePrice"
+                />
+
+            <EditText
+                android:id="@+id/editText_servicePrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:importantForAutofill="no"
+                android:inputType="number"
+                android:layout_marginStart="10dp"
+                android:padding="10dp"
+                android:background="@drawable/edit_text_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewTime"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/iconLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/timeLayout"
+                >
+
+                <ImageView
+                    android:id="@+id/serviceIcon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/place_holder"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/buttonChooseIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#0081F3"
+                    android:text="@string/choose_icon"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TextContrastCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/backgroundImageLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/priseLayout"
-                >
+                app:layout_constraintTop_toBottomOf="@+id/iconLayout">
 
                 <ImageView
-                    android:id="@+id/serviceImage"
+                    android:id="@+id/serviceBackgroundImage"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:contentDescription="@string/todo"
@@ -217,18 +286,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <Button
-                    android:id="@+id/buttonChooseImage"
+                    android:id="@+id/buttonChooseBackgroundImage"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#0081F3"
-                    android:text="@string/choose_picture"
+                    android:text="@string/choose_background_image"
                     android:textAllCaps="false"
+                    app:layout_constraintStart_toEndOf="@id/serviceBackgroundImage"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="TextContrastCheck" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

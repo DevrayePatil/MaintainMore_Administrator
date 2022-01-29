@@ -1,12 +1,21 @@
-package com.example.maintainmoreadministrator.Models;
+package com.administrator.maintainmore.Models;
 
 public class UserModal {
-    String name, email, imageUrl;
+    String userID, name, email, imageUrl;
 
-    public UserModal(String name, String email, String imageUrl) {
+    public UserModal(String userID,String name, String email, String imageUrl) {
+        this.userID = userID;
         this.name = name;
         this.email = email;
         this.imageUrl = imageUrl;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getImageUrl() {

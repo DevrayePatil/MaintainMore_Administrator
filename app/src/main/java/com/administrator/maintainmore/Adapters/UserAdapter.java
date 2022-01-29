@@ -1,4 +1,4 @@
-package com.example.maintainmoreadministrator.Adapters;
+package com.administrator.maintainmore.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.maintainmoreadministrator.Models.UserModal;
-import com.example.maintainmoreadministrator.R;
+import com.administrator.maintainmore.Models.UserModal;
+import com.administrator.maintainmore.R;
 
 import java.util.ArrayList;
 
@@ -41,7 +41,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder>{
         holder.displayName.setText(modal.getName());
         holder.displayEmail.setText(modal.getEmail());
 
-        Glide.with(context).load(modal.getImageUrl()).into(holder.profilePicture);
+        Glide.with(context).load(modal.getImageUrl()).placeholder(R.drawable.ic_person).into(holder.profilePicture);
 
 
     }

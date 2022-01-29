@@ -1,4 +1,4 @@
-package com.example.maintainmoreadministrator.Fragment;
+package com.administrator.maintainmore.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.maintainmoreadministrator.LoginActivity;
-import com.example.maintainmoreadministrator.R;
+import com.administrator.maintainmore.LoginActivity;
+import com.administrator.maintainmore.R;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
