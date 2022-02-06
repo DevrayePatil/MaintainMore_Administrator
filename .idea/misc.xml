@@ -24,19 +24,26 @@
       <map>
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/background_botton_sheet.xml" value="0.26614583333333336" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/bottom_sheet_indicator.xml" value="0.26614583333333336" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/edit_text_background.xml" value="0.183" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/etit_text_background.xml" value="0.26614583333333336" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/ic_add.xml" value="0.26614583333333336" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/ic_home_service.xml" value="0.26614583333333336" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/ic_person.xml" value="0.26614583333333336" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/ic_rupee.xml" value="0.183" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/ic_services.xml" value="0.183" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/ic_verified_user.xml" value="0.183" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/activity_add_service.xml" value="0.20512820512820512" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/activity_dash_board.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/activity_update_service.xml" value="0.2660753880266075" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_home_appliances.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_home_service.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_personal_service.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/bottomsheetlayout.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/card_user.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/fragment_bottom_sheet_add_services.xml" value="0.25" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/fragment_dashboard.xml" value="0.4323699421965318" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/fragment_home_service.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/fragment_personal_service.xml" value="0.25" />
@@ -45,6 +52,8 @@
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/fragment_technician.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/fragment_user.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/fragment_users.xml" value="0.25" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/layout/images_picker.xml" value="0.20512820512820512" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/menu/bottom_nevigation_menu.xml" value="0.25" />
       </map>
     </option>

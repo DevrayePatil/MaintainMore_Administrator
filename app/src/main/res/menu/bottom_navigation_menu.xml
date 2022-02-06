@@ -2,15 +2,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/home"
-        android:title="@string/home"
-        android:icon="@drawable/ic_home"
+        android:id="@+id/dashboard"
+        android:title="@string/dashboard"
+        android:icon="@drawable/ic_dashboard"
         />
 
     <item
-        android:id="@+id/search"
-        android:title="@string/search"
-        android:icon="@drawable/ic_search"
+        android:id="@+id/services"
+        android:title="@string/services"
+        android:icon="@drawable/ic_services"
         />
 
     <item

@@ -1,9 +1,9 @@
 package com.administrator.maintainmore.Models;
 
-public class UserModal {
+public class UsersModal {
     String userID, name, email, imageUrl;
 
-    public UserModal(String userID,String name, String email, String imageUrl) {
+    public UsersModal(String userID, String name, String email, String imageUrl) {
         this.userID = userID;
         this.name = name;
         this.email = email;

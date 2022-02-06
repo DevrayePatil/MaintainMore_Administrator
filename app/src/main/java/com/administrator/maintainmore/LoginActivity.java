@@ -12,6 +12,7 @@ import android.widget.EditText;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
@@ -20,6 +21,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
+    FirebaseFirestore db;
 
     EditText EmailId, Password;
     Button buttonLogin;
@@ -29,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
 
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user!=null) {
-            startActivity(new Intent(this, DashBoardActivity.class));
+            startActivity(new Intent(this, MainActivity.class));
         }
 
         super.onStart();
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin= findViewById(R.id.buttonLogin);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
 
         buttonLogin.setOnClickListener(view -> SignIn());
 
@@ -85,15 +88,21 @@ public class LoginActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
 
 //                            Toast.makeText(MainActivity.this, "Login Successful", Toast.LENGTH_SHORT).show();
+                        if (emailId.equals("admin@maintainmore.com")){
+                            SweetAlertDialog sweetAlertDialog= new SweetAlertDialog(LoginActivity.this,SweetAlertDialog.SUCCESS_TYPE);
+                            sweetAlertDialog.setTitleText("Login Successful");
+                            sweetAlertDialog.setConfirmClickListener(sweetAlertDialog1 -> {
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                finish();
+                                sweetAlertDialog1.dismissWithAnimation();
+                            }).setCanceledOnTouchOutside(false);
+                            sweetAlertDialog.show();
+                        }
+                        else {
+                            new SweetAlertDialog(LoginActivity.this,SweetAlertDialog.ERROR_TYPE).setTitleText("This is not admin account").show();
+                            FirebaseAuth.getInstance().signOut();
+                        }
 
-                        SweetAlertDialog sweetAlertDialog= new SweetAlertDialog(LoginActivity.this,SweetAlertDialog.SUCCESS_TYPE);
-                        sweetAlertDialog.setTitleText("Login Successful");
-                        sweetAlertDialog.setConfirmClickListener(sweetAlertDialog1 -> {
-                            startActivity(new Intent(getApplicationContext(),DashBoardActivity.class));
-                            finish();
-                            sweetAlertDialog1.dismissWithAnimation();
-                        }).setCanceledOnTouchOutside(false);
-                        sweetAlertDialog.show();
 
 
                     } else {

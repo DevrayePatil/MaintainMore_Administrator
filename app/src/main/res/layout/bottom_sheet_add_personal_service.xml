@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -12,236 +13,209 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/bottomSheetHeader"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/bottomSheetBody"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/bottomSheetIndicatorBackground"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_margin="5dp"
-                app:layout_constraintBottom_toTopOf="@id/textViewAddServices"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:gravity="center">
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/bottomSheetIndicator"
                     android:layout_width="50dp"
                     android:layout_height="8dp"
+                    android:layout_gravity="center"
                     android:contentDescription="@string/todo"
                     app:cardBackgroundColor="#BCBCBC"
-                    app:cardCornerRadius="4dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:cardCornerRadius="4dp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/textViewAddServices"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:text="@string/add_personal_service"
                 android:textAlignment="center"
                 android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bottomSheetIndicatorBackground" />
+                android:textStyle="bold" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:id="@+id/bottomSheetBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/bottomSheetFooter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/bottomSheetHeader">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/serviceName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/normal_half_margin"
                 android:paddingBottom="@dimen/normal_half_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                >
+                android:weightSum="3">
 
                 <TextView
                     android:id="@+id/textView"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:text="@string/service_name"
-                    android:textSize="16sp"
-                    android:minWidth="150dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/editText_serviceName"
-                    />
+                    android:textSize="16sp" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/editText_serviceName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
+                    android:layout_weight="2"
                     android:autofillHints="Enter Service Name"
+                    android:background="@drawable/edit_text_background"
                     android:inputType="textPersonName"
                     android:padding="10dp"
-                    android:background="@drawable/edit_text_background"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="LabelFor,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck,
+                    TouchTargetSizeCheck" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/descriptionLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/normal_half_margin"
                 android:paddingBottom="@dimen/normal_half_margin"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/serviceName"
-                app:layout_constraintBottom_toTopOf="@+id/priseLayout"
-                >
+                android:weightSum="3">
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:minWidth="150dp"
                     android:text="@string/service_description"
                     android:textSize="@dimen/bottom_sheet_text_size"
-                    android:minWidth="150dp"
-                    android:layout_marginTop="10dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/editText_serviceDescription"/>
+                    />
 
                 <EditText
                     android:id="@+id/editText_serviceDescription"
                     android:layout_width="0dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="10dp"
+                    android:layout_weight="2"
                     android:background="@drawable/edit_text_background"
                     android:gravity="top"
                     android:hint="@string/service_description"
                     android:importantForAutofill="no"
-                    android:inputType="textPersonName"
                     android:padding="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textView3"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck,DuplicateSpeakableTextCheck,TextContrastCheck" />
+                    tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck,
+                    DuplicateSpeakableTextCheck,TextContrastCheck" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/priseLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/normal_half_margin"
                 android:paddingBottom="@dimen/normal_half_margin"
-                app:layout_constraintTop_toBottomOf="@id/descriptionLayout"
-                app:layout_constraintBottom_toTopOf="@+id/timeLayout">
+                android:weightSum="3">
 
                 <TextView
                     android:id="@+id/textViewPrise"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@string/service_time"
-                    android:textSize="@dimen/bottom_sheet_text_size"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
                     android:minWidth="150dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/editText_requiredTime"
-                    />
+                    android:text="@string/service_time"
+                    android:textSize="@dimen/bottom_sheet_text_size" />
 
                 <EditText
                     android:id="@+id/editText_requiredTime"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:importantForAutofill="no"
-                    android:inputType="number"
                     android:layout_marginStart="10dp"
-                    android:padding="10dp"
+                    android:layout_weight="2"
                     android:background="@drawable/edit_text_background"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/textViewPrise"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:padding="10dp"
                     tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/timeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/normal_half_margin"
-            android:paddingBottom="@dimen/normal_half_margin"
-            app:layout_constraintTop_toBottomOf="@id/priseLayout"
-            app:layout_constraintBottom_toTopOf="@+id/iconLayout">
-
-            <TextView
-                android:id="@+id/textViewTime"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/timeLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/service_price"
-                android:textSize="@dimen/bottom_sheet_text_size"
-                android:minWidth="150dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/editText_servicePrice"
-                />
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/normal_half_margin"
+                android:paddingBottom="@dimen/normal_half_margin"
+                android:weightSum="3">
 
-            <EditText
-                android:id="@+id/editText_servicePrice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:importantForAutofill="no"
-                android:inputType="number"
-                android:layout_marginStart="10dp"
-                android:padding="10dp"
-                android:background="@drawable/edit_text_background"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textViewTime"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                <TextView
+                    android:id="@+id/textViewTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:minWidth="150dp"
+                    android:text="@string/service_price"
+                    android:textSize="@dimen/bottom_sheet_text_size" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:focusable="true"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:boxStrokeColor="#0081F3"
+                    android:layout_marginStart="@dimen/normal_margin"
+                    app:startIconDrawable="@drawable/ic_rupee"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editText_servicePrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="true"
+                        android:inputType="number"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/iconLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/timeLayout"
-                >
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/serviceIcon"
@@ -270,10 +244,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/backgroundImageLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iconLayout">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/serviceBackgroundImage"
@@ -290,9 +261,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#0081F3"
-                    android:text="@string/choose_background_image"
+                    android:text="@string/choose_images"
                     android:textAllCaps="false"
-                    app:layout_constraintStart_toEndOf="@id/serviceBackgroundImage"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -301,7 +271,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
         <LinearLayout
@@ -325,7 +295,7 @@
                 android:backgroundTint="@color/design_default_color_error"
                 android:text="@string/cancel"
                 android:textAllCaps="false"
-                tools:ignore="ButtonStyle" />
+                tools:ignore="ButtonStyle,TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/buttonSave"
@@ -336,7 +306,7 @@
                 android:backgroundTint="@color/design_default_color_primary"
                 android:text="@string/save"
                 android:textAllCaps="false"
-                tools:ignore="ButtonStyle" />
+                tools:ignore="ButtonStyle,TouchTargetSizeCheck" />
 
         </LinearLayout>
 

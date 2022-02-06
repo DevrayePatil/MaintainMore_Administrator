@@ -7,8 +7,6 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 
-
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,6 +20,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+import com.administrator.maintainmore.Models.ImagePickerModal;
 import com.administrator.maintainmore.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.firestore.DocumentReference;
@@ -30,7 +29,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -44,10 +45,13 @@ public class AddPersonalService extends BottomSheetDialogFragment {
 
     String documentID;
 
+    String iconUrl, backgroundImageUrl;
+
 
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
     FirebaseFirestore db ;
+    DocumentReference reference;
 
 
     Button buttonChooseImage,buttonChooseBackgroundImage, buttonSave, buttonCancel;
@@ -59,6 +63,9 @@ public class AddPersonalService extends BottomSheetDialogFragment {
         // Required empty public constructor
     }
 
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,6 +76,11 @@ public class AddPersonalService extends BottomSheetDialogFragment {
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
+
+        reference = db.collection("Personal Services").document();
+        documentID = reference.getId();
+
+        Log.i(TAG, documentID);
 
         buttonChooseImage = view.findViewById(R.id.buttonChooseIcon);
         buttonChooseBackgroundImage = view.findViewById(R.id.buttonChooseBackgroundImage);
@@ -86,6 +98,8 @@ public class AddPersonalService extends BottomSheetDialogFragment {
 
         buttonChooseImage.setOnClickListener(view1 -> ChooseIcon());
         buttonChooseBackgroundImage.setOnClickListener(view1 -> ChooseBackgroundImage());
+
+        buttonCancel.setOnClickListener(view1 -> Toast.makeText(getActivity(), "Link" + iconUrl, Toast.LENGTH_SHORT).show());
         buttonSave.setOnClickListener(view1 -> SaveToDatabase());
 
         return view;
@@ -131,83 +145,35 @@ public class AddPersonalService extends BottomSheetDialogFragment {
         }
 
 
+        service.put("serviceType","Personal Service");
         service.put("serviceName",serviceName);
         service.put("serviceDescription",serviceDescription);
         service.put("requiredTime",requiredTime);
         service.put("servicePrice",servicePrice);
+        service.put("iconUrl",iconUrl);
+        service.put("backgroundImageUrl",backgroundImageUrl);
 
 
+        reference.set(service).addOnSuccessListener(unused -> {
+            Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show();
+            dismiss();
 
-        if (uri != null) {
-            storageReference = storageReference.child("Service icons/" + randomID);
+        });
 
-            storageReference.putFile(uri).addOnSuccessListener(taskSnapshot ->
-                    storageReference.getDownloadUrl().addOnSuccessListener(uri ->
-                            SaveIconURL(String.valueOf(uri))
-                    )
-            ).addOnFailureListener(e -> Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show());
-        }
-        else {
-            Toast.makeText(getActivity(), "Choose Icon", Toast.LENGTH_SHORT).show();
-            return;
-        }
+        Log.i(TAG,"serviceName :" + serviceName);
+        Log.i(TAG,"serviceDescription :" + serviceDescription);
+        Log.i(TAG,"requiredTime :" + requiredTime);
+        Log.i(TAG,"servicePrice :" + servicePrice);
+        Log.i(TAG,"iconUrl :" + iconUrl);
+        Log.i(TAG,"backgroundImageUrl :" + backgroundImageUrl);
 
-
-        new Handler().postDelayed(() -> {
-            if (uriBackground != null){
-                storageReference = storageReference.child("Service Pictures/" +randomID);
-
-                storageReference.putFile(uriBackground).addOnSuccessListener(taskSnapshot ->
-                        storageReference.getDownloadUrl().addOnSuccessListener(uri ->
-                                SaveBackgroundImageURL(String.valueOf(uri))
-                        )
-                ).addOnFailureListener(e -> Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show());
-            }
-            else {
-                Toast.makeText(getActivity(), "Choose Icon", Toast.LENGTH_SHORT).show();
-            }
-        },2000);
-
-
-
-
-        DocumentReference reference = db.collection("Personal Services").document();
-
-        documentID = reference.getId();
-
-        reference.set(service).addOnSuccessListener(unused ->
-                        Toast.makeText(getActivity(), "Data Saved", Toast.LENGTH_SHORT).show()
-        );
-
-        Log.i(TAG,"ID :" + documentID);
     }
-
-    private void SaveIconURL(String url){
-
-        db.collection("Personal Services").document(documentID).update(
-                "iconUrl", url
-        ).addOnSuccessListener(unused -> Log.i(TAG, "Icon link created"))
-                .addOnFailureListener(e -> Log.i(TAG,"Icon Failed " + e));
-
-        Log.i(TAG, "Icon link: " + url);
-    }
-
-    private void SaveBackgroundImageURL( String url) {
-        db.collection("Personal Services").document(documentID).update(
-                "backgroundImageURL", url
-        ).addOnSuccessListener(unused -> Log.i(TAG, "Background image link created"))
-                .addOnFailureListener(e -> Log.i(TAG,"Background Failed " + e));
-
-        Log.i(TAG, "Background Image link: " + url);
-    }
-
 
 
     private void ChooseBackgroundImage() {
         Intent intent = new Intent("com.android.camera.action.CROP");
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-
         startActivityForResult(Intent.createChooser(intent, "Choose Image"),BACKGROUND_IMAGE_REQUEST_ID);
     }
 
@@ -230,24 +196,47 @@ public class AddPersonalService extends BottomSheetDialogFragment {
             try{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), uri);
                 serviceIcon.setImageBitmap(bitmap);
+
+                String randomID = UUID.randomUUID().toString();
+
+                storageReference = storageReference.child("Service Pictures/" + randomID);
+                storageReference.putFile(uri).addOnSuccessListener(taskSnapshot -> {
+                    storageReference.getDownloadUrl().addOnSuccessListener(uri -> iconUrl = String.valueOf(uri));
+                    Toast.makeText(getActivity(), "Picture Saved", Toast.LENGTH_SHORT).show();
+
+                })
+                        .addOnFailureListener(e -> Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show());
             }
             catch (IOException e){
                 e.printStackTrace();
             }
         }
-
         if (requestCode == BACKGROUND_IMAGE_REQUEST_ID && resultCode == RESULT_OK && data != null &
                 (data != null ? data.getData() : null) != null){
             uriBackground = data.getData();
             try{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), uriBackground);
                 serviceBackgroundImage.setImageBitmap(bitmap);
+
+                String randomID = UUID.randomUUID().toString();
+
+                storageReference = storageReference.child("Service Pictures/" + randomID);
+                storageReference.putFile(uriBackground).addOnSuccessListener(taskSnapshot -> {
+
+                    storageReference.getDownloadUrl().addOnSuccessListener(uri -> backgroundImageUrl = String.valueOf(uri));
+                    Toast.makeText(getActivity(), "Picture Saved", Toast.LENGTH_SHORT).show();
+
+                }).addOnFailureListener(e -> Toast.makeText(getActivity(), "Failed", Toast.LENGTH_SHORT).show());
             }
             catch (IOException e){
                 e.printStackTrace();
             }
         }
+
+
     }
+
+
 
 
 }

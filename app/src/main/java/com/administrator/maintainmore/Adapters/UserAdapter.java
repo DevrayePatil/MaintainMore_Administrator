@@ -11,32 +11,35 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.administrator.maintainmore.Models.UserModal;
+import com.administrator.maintainmore.Models.UsersModal;
 import com.administrator.maintainmore.R;
 
 import java.util.ArrayList;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder>{
 
-    ArrayList<UserModal> userModals;
+    ArrayList<UsersModal> usersModals;
     Context context;
 
-    public UserAdapter(ArrayList<UserModal> userModals, Context context) {
-        this.userModals = userModals;
+    viewHolder.OnUserCardClickListener cardClickListener;
+
+    public UserAdapter(ArrayList<UsersModal> usersModals, Context context, viewHolder.OnUserCardClickListener cardClickListener) {
+        this.usersModals = usersModals;
         this.context = context;
+        this.cardClickListener = cardClickListener;
     }
 
     @NonNull
     @Override
     public viewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.card_user, parent, false);
-        return new viewHolder(view);
+        return new viewHolder(view, cardClickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
 
-        UserModal modal = userModals.get(position);
+        UsersModal modal = usersModals.get(position);
 
         holder.displayName.setText(modal.getName());
         holder.displayEmail.setText(modal.getEmail());
@@ -48,20 +51,34 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.viewHolder>{
 
     @Override
     public int getItemCount() {
-        return userModals.size();
+        return usersModals.size();
     }
 
-    public static class viewHolder extends RecyclerView.ViewHolder{
+    public static class viewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView displayName, displayEmail;
         ImageView profilePicture;
 
-        public viewHolder(@NonNull View itemView) {
+        OnUserCardClickListener cardClickListener;
+
+        public viewHolder(@NonNull View itemView, OnUserCardClickListener cardClickListener) {
             super(itemView);
 
             displayName = itemView.findViewById(R.id.displayName);
             displayEmail = itemView.findViewById(R.id.displayEmail);
             profilePicture = itemView.findViewById(R.id.profilePicture);
+
+            this.cardClickListener = cardClickListener;
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            cardClickListener.onUserCardClickListener(getAdapterPosition());
+        }
+
+        public interface OnUserCardClickListener{
+            void onUserCardClickListener(int position);
         }
     }
 }

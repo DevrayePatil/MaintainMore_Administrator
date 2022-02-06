@@ -3,7 +3,7 @@
     <string name="password">Enter your Password</string>
     <string name="email">"Enter your Email "</string>
     <string name="login">Login</string>
-    <string name="dash_board">DashBoard</string>
+    <string name="dashboard">Dashboard</string>
     <string name="todo">TODO</string>
     <string name="home">Home</string>
     <string name="search">Search</string>
@@ -32,4 +32,16 @@
     <string name="service_time">Required Time</string>
     <string name="choose_icon">Choose Icon</string>
     <string name="choose_background_image">Choose Background Image</string>
+    <string name="services">Services</string>
+
+    <string name="required_time">Required Time</string>
+    <string name="number_of_users">Number of Users</string>
+    <string name="number_of_bookings">Number of Bookings</string>
+    <string name="number_of_personal_services">Number of Personal Services</string>
+    <string name="choose_images">Choose Images</string>
+    <string name="change_icon">Change Icon</string>
+    <string name="change_background_image">Change Background</string>
+    <string name="number_of_technicians">Nubner of Technicians</string>
+    <string name="number_of_home_services">Number of Home Services</string>
+    <string name="number_of_repair_appliances">Number of Repair Appliances</string>
 </resources>

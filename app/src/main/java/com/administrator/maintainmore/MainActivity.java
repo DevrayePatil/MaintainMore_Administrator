@@ -19,14 +19,14 @@ import android.view.Window;
 import com.administrator.maintainmore.BottomSheetFragments.AddHomeAppliances;
 import com.administrator.maintainmore.BottomSheetFragments.AddHomeService;
 import com.administrator.maintainmore.BottomSheetFragments.AddPersonalService;
-import com.administrator.maintainmore.Fragment.HomeFragment;
+import com.administrator.maintainmore.Fragment.DashboardFragment;
 import com.administrator.maintainmore.Fragment.ProfileFragment;
 import com.administrator.maintainmore.Fragment.SearchFragment;
 import com.administrator.maintainmore.Fragment.UsersFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-public class DashBoardActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
 //    private FirebaseAuth firebaseAuth;
     BottomNavigationView bottomNavigationView;
@@ -38,7 +38,7 @@ public class DashBoardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dash_board);
+        setContentView(R.layout.activity_main);
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
@@ -52,9 +52,9 @@ public class DashBoardActivity extends AppCompatActivity {
         buttonFab.setOnClickListener(view -> directGo());
 
 
-        HomeFragment homeFragment = new HomeFragment();
+        DashboardFragment dashboardFragment = new DashboardFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.fragmentContainer, homeFragment);
+        fragmentTransaction.replace(R.id.fragmentContainer, dashboardFragment);
         fragmentTransaction.commit();
     }
 
@@ -104,13 +104,13 @@ public class DashBoardActivity extends AppCompatActivity {
 
         Fragment setFragment = null;
 
-        if (item.getItemId() == R.id.home){
-            setFragment = new HomeFragment();
+        if (item.getItemId() == R.id.dashboard){
+            setFragment = new DashboardFragment();
         } else if(item.getItemId() == R.id.users){
             setFragment = new UsersFragment();
         }else if(item.getItemId() == R.id.profile){
             setFragment = new ProfileFragment();
-        }else if(item.getItemId() == R.id.search){
+        }else if(item.getItemId() == R.id.services){
             setFragment = new SearchFragment();
         }
 
