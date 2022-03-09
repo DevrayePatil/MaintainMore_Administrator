@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import com.administrator.maintainmore.Models.ImagePickerModal;
 import com.administrator.maintainmore.R;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.firebase.firestore.DocumentReference;
@@ -29,9 +28,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -41,10 +38,10 @@ public class AddPersonalService extends BottomSheetDialogFragment {
     private static final int IMAGE_REQUEST_ID = 1;
     private static final int BACKGROUND_IMAGE_REQUEST_ID = 2;
     private static final String TAG = "AddPersonalServiceInfo";
+
     Uri uri, uriBackground;
 
     String documentID;
-
     String iconUrl, backgroundImageUrl;
 
 

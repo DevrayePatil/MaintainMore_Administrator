@@ -1,5 +1,6 @@
 package com.administrator.maintainmore;
 
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -11,6 +12,7 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 
 import android.view.ViewGroup;
@@ -21,16 +23,23 @@ import com.administrator.maintainmore.BottomSheetFragments.AddHomeService;
 import com.administrator.maintainmore.BottomSheetFragments.AddPersonalService;
 import com.administrator.maintainmore.Fragment.DashboardFragment;
 import com.administrator.maintainmore.Fragment.ProfileFragment;
-import com.administrator.maintainmore.Fragment.SearchFragment;
+import com.administrator.maintainmore.Fragment.ServicesFragment;
 import com.administrator.maintainmore.Fragment.UsersFragment;
+
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
-//    private FirebaseAuth firebaseAuth;
+    private static final String TAG = "MainActivityInfo";
+    String notificationToken = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE6MTAxNjY1Mjk2MjIxNzphbmRyb2lkOjk4MjEzNTU2MmYyZmNkZTY4ZTRjYjgiLCJleHAiOjE2NDYzMjc4MjcsImZpZCI6ImZ2VTJNbGhoUVN5a0xlVURZaHpkXy0iLCJwcm9qZWN0TnVtYmVyIjoxMDE2NjUyOTYyMjE3fQ.AB2LPV8wRgIhAJORWkG9cG09GlFol8klrcMPBqKU34w40jqV8p5YaPS0AiEAmDcTNzDQkGj6ZtjnjAGoSIwNl5R8g1q7WmaebVH-wcI";
+
+
     BottomNavigationView bottomNavigationView;
     FloatingActionButton buttonFab;
+
 
 
 
@@ -42,6 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+        FirebaseMessaging.getInstance().subscribeToTopic("all");
+
+
+        Log.i(TAG, notificationToken);
+
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         buttonFab = findViewById(R.id.buttonFab);
 
@@ -50,6 +64,15 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(itemSelected);
 
         buttonFab.setOnClickListener(view -> directGo());
+
+//        Create Badge on the bottomNavigationView
+        BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.dashboard);
+        badgeDrawable.setBackgroundColor(Color.RED);
+        badgeDrawable.setBadgeTextColor(Color.WHITE);
+        badgeDrawable.setMaxCharacterCount(2);
+        badgeDrawable.setNumber(10);
+        badgeDrawable.setVisible(true);
+
 
 
         DashboardFragment dashboardFragment = new DashboardFragment();
@@ -106,12 +129,17 @@ public class MainActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.dashboard){
             setFragment = new DashboardFragment();
+
+            FCMNotificationsSender notificationsSender = new FCMNotificationsSender(notificationToken,"Title",
+                    "this is body", getApplicationContext(), MainActivity.this);
+            notificationsSender.SendNotifications();
+
         } else if(item.getItemId() == R.id.users){
             setFragment = new UsersFragment();
         }else if(item.getItemId() == R.id.profile){
             setFragment = new ProfileFragment();
         }else if(item.getItemId() == R.id.services){
-            setFragment = new SearchFragment();
+            setFragment = new ServicesFragment();
         }
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();

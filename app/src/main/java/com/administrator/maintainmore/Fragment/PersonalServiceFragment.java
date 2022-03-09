@@ -46,7 +46,6 @@ public class PersonalServiceFragment extends Fragment
 
     ArrayList<PersonalServiceCardModal> personalServiceCardModal = new ArrayList<>();
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

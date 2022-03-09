@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MaintainMore(Administrator)</string>
     <string name="password">Enter your Password</string>
     <string name="email">"Enter your Email "</string>
@@ -44,4 +44,23 @@
     <string name="number_of_technicians">Nubner of Technicians</string>
     <string name="number_of_home_services">Number of Home Services</string>
     <string name="number_of_repair_appliances">Number of Repair Appliances</string>
+    <string name="new_registrations">New Registration</string>
+    <string name="new_registration">New Registration</string>
+    <string name="user_email">dummy@mail.com</string>
+    <string name="dummy_name">Dummy Name</string>
+    <string name="dummy_email">dummy@mail.com</string>
+    <string name="enter_phone_number">Enter Your Email</string>
+    <string name="label_1">Male</string>
+    <string name="label_2">Female</string>
+    <string name="name">Name</string>
+    <string name="technician_email">Email</string>
+    <string name="technician_phone_number">Number</string>
+    <string name="technician_dob">Date Of Birth</string>
+    <string name="technician_gender">Gender</string>
+    <string name="technical_role">Role</string>
+    <string name="service_certificate">Service Certificate</string>
+    <string name="approve">Approve</string>
+    
+    
+    <string name="fcmServerKey" tools:ignore="Typos">"AAAA7LU9Gak:APA91bG9_ZeKdLS55Ft-tyeSkRLNlHLJ2iMk8-M70BuFN3z8XcGCN_6LLPkdzddQvgp4W1jkm1sGLY833gCVmrd03C2Spk-AwtZr-bOHjNF6dH-d-3dwigN11Sq-d-yl8Lc-QWwG9pzv"</string>
 </resources>

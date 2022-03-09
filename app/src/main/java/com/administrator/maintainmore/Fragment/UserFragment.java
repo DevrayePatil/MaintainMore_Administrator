@@ -37,6 +37,7 @@ public class UserFragment extends Fragment implements UserAdapter.viewHolder.OnU
 
 
     @Override
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment

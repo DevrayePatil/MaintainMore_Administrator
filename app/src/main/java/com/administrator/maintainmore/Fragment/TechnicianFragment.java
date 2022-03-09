@@ -11,9 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.administrator.maintainmore.Adapters.TechniciansAdapter;
-import com.administrator.maintainmore.Adapters.UserAdapter;
 import com.administrator.maintainmore.Models.TechniciansModal;
-import com.administrator.maintainmore.Models.UsersModal;
 import com.administrator.maintainmore.R;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,8 +32,6 @@ public class TechnicianFragment extends Fragment {
 
     ArrayList<TechniciansModal> techniciansModals = new ArrayList<>();
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -53,13 +49,12 @@ public class TechnicianFragment extends Fragment {
                 techniciansModals.add(new TechniciansModal(snapshot.getId(),snapshot.getString("name"), snapshot.getString("email")
                         ,snapshot.getString("imageUrl")));
             }
-            TechniciansAdapter techniciansAdapter = new TechniciansAdapter(techniciansModals, getContext());
-            recyclerView_technician.setAdapter(techniciansAdapter);
-
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-            recyclerView_technician.setLayoutManager(linearLayoutManager);
-
         });
+        TechniciansAdapter techniciansAdapter = new TechniciansAdapter(techniciansModals, getContext());
+        recyclerView_technician.setAdapter(techniciansAdapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView_technician.setLayoutManager(linearLayoutManager);
 
 
         return view;

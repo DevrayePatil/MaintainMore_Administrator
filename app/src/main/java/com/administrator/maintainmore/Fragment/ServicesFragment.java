@@ -15,10 +15,10 @@ import com.administrator.maintainmore.R;
 import com.google.android.material.tabs.TabLayout;
 
 
-public class SearchFragment extends Fragment {
+public class ServicesFragment extends Fragment {
 
 
-    public SearchFragment() {
+    public ServicesFragment() {
         // Required empty public constructor
     }
 
@@ -29,7 +29,7 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_search, container, false);
+        View view = inflater.inflate(R.layout.fragment_services, container, false);
 
         viewPager = view.findViewById(R.id.viewPager);
         tabLayout = view.findViewById(R.id.tabLayout);

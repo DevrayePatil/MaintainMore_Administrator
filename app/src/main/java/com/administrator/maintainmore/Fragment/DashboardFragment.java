@@ -1,8 +1,11 @@
 package com.administrator.maintainmore.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,17 +13,25 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.administrator.maintainmore.Adapters.NewTechnicianAdapter;
+import com.administrator.maintainmore.ApprovalStatusActivity;
+import com.administrator.maintainmore.Models.NewTechnicianModal;
 import com.administrator.maintainmore.R;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 
-public class DashboardFragment extends Fragment {
+
+public class DashboardFragment extends Fragment implements NewTechnicianAdapter.viewHolder.OnNewTechnicianCardClickListener {
 
     private static final String TAG = "DashboardFragmentInfo";
 
     TextView displayNumberOfUsers, displayNumberOfTechnicians;
     TextView displayNumberOfPersonalServices, displayNumberOfHomeServices, displayNumberOfRepairAppliances;
     TextView displayNumberOfBookings;
+    RecyclerView recyclerView_new_users;
+
 
     FirebaseFirestore db;
 
@@ -29,6 +40,9 @@ public class DashboardFragment extends Fragment {
     }
 
     int numberOfCounts;
+
+    ArrayList<NewTechnicianModal> newTechnicianModals = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -46,9 +60,26 @@ public class DashboardFragment extends Fragment {
         displayNumberOfRepairAppliances = view.findViewById(R.id.displayNumberOfRepairAppliances);
 
         displayNumberOfBookings = view.findViewById(R.id.displayNumberOfBookings);
+        recyclerView_new_users = view.findViewById(R.id.recyclerView_new_users);
 
 
         DashboardCounter();
+
+        db.collection("Technicians").whereEqualTo("approvalStatus", "Registered").addSnapshotListener((value, error) -> {
+            newTechnicianModals.clear();
+            assert value != null;
+            for (DocumentSnapshot snapshot: value){
+                newTechnicianModals.add(new NewTechnicianModal(snapshot.getId(),snapshot.getString("name"),
+                        snapshot.getString("email"), snapshot.getString("phoneNumber")
+                        ,snapshot.getString("imageUrl")));
+            }
+            NewTechnicianAdapter techniciansAdapter = new NewTechnicianAdapter(newTechnicianModals, getContext(),this);
+            recyclerView_new_users.setAdapter(techniciansAdapter);
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+            recyclerView_new_users.setLayoutManager(linearLayoutManager);
+        });
+
 
 
         return view;
@@ -100,6 +131,32 @@ public class DashboardFragment extends Fragment {
             Log.i(TAG, "Bookings: " + numberOfCounts);
             displayNumberOfBookings.setText(String.valueOf(numberOfCounts));
         });
+
+
+
+
+    }
+
+    @Override
+    public void onNewTechnicianCardClickListener(int position) {
+
+        String technicianID = newTechnicianModals.get(position).getTechnicianID();
+        String technicianName = newTechnicianModals.get(position).getTechnicianName();
+        String technicianEmail = newTechnicianModals.get(position).getTechnicianEmail();
+        String technicianPhoneNumber = newTechnicianModals.get(position).getTechnicianPhoneNumber();
+
+        Intent intent = new Intent(requireActivity(), ApprovalStatusActivity.class);
+
+        intent.putExtra("technicianID", technicianID);
+        intent.putExtra("technicianName", technicianName);
+        intent.putExtra("technicianEmail", technicianEmail);
+        intent.putExtra("technicianPhoneNumber", technicianPhoneNumber);
+
+        startActivity(intent);
+        Log.i(TAG,"ID:" + technicianID);
+        Log.i(TAG, "Name:" + technicianName);
+        Log.i(TAG, "Email:" + technicianEmail);
+        Log.i(TAG, "Phone Number:" + technicianPhoneNumber);
 
     }
 }

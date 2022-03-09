@@ -8,5 +8,6 @@
     <dimen name="bottom_sheet_text_size">16sp</dimen>
 
     <dimen name="normal_half_margin">5dp</dimen>
+    <dimen name="technician_details_text">22sp</dimen>
 
 </resources>
