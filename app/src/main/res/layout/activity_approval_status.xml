@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ApprovalStatusActivity">
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/profileBackground"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_profile"
+            app:layout_constraintBottom_toTopOf="@+id/personalInfoLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/profileLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/circularImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/pictureCard"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            app:cardCornerRadius="50dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:strokeColor="#000000"
+                            app:strokeWidth="2dp">
+
+                            <ImageView
+                                android:id="@+id/profilePicture"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:contentDescription="@string/todo"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_person" />
+
+                        </com.google.android.material.card.MaterialCardView>
+
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/displayName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dummy_name"
+                    android:textSize="@dimen/profile_text"
+                    app:layout_constraintEnd_toEndOf="@id/profileLayout"
+                    app:layout_constraintStart_toStartOf="@id/profileLayout"
+                    app:layout_constraintTop_toBottomOf="@id/profileLayout"
+                    tools:ignore="TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/displayEmail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dummy_email"
+                    android:textSize="@dimen/profile_text"
+                    app:layout_constraintEnd_toEndOf="@id/profileLayout"
+                    app:layout_constraintStart_toStartOf="@id/profileLayout"
+                    app:layout_constraintTop_toBottomOf="@id/displayName"
+                    tools:ignore="TextContrastCheck" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/personalInfoLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profileBackground">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                android:layout_margin="@dimen/normal_half_margin"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    android:layout_margin="@dimen/normal_half_margin"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/name"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:id="@+id/displayTechnicianName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Technician"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="2"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    android:layout_margin="@dimen/normal_half_margin"
+
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/technician_email"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="1"
+                        />
+
+                    <TextView
+                        android:id="@+id/displayTechnicianEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Technician"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="2"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    android:layout_margin="@dimen/normal_half_margin"
+
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/technician_phone_number"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="1"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/displayTechnicianPhoneNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Technician"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="2"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    android:layout_margin="@dimen/normal_half_margin"
+
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/technician_gender"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="1"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/displayTechnicianGender"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Technician"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="2"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    android:layout_margin="@dimen/normal_half_margin"
+
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/technician_dob"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="1"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/displayTechnicianDOB"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Technician"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="2"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="3"
+                    android:layout_margin="@dimen/normal_half_margin"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/role"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/technical_role"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="1"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/displayTechnicianRole"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        tools:text="Technician"
+                        android:layout_gravity="center"
+                        android:textSize="@dimen/technician_details_text"
+                        android:layout_weight="2"
+                        />
+
+                </LinearLayout>
+
+
+
+
+
+
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/service_certificate"
+                        android:textSize="@dimen/technician_details_text"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/serviceCertificate"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+                    <ImageView
+                        android:id="@+id/serviceCertificate"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="clip_vertical"
+                        android:src="@drawable/ic_image_placeholder"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:contentDescription="@string/todo"
+
+                        />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
+                >
+
+                <Button
+                    android:id="@+id/buttonCancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/design_default_color_error"
+                    android:text="@string/cancel"
+                    android:textAllCaps="false"
+                    tools:ignore="ButtonStyle" />
+
+                <Button
+                    android:id="@+id/buttonApprove"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:text="@string/approve"
+                    android:textAllCaps="false"
+                    tools:ignore="ButtonStyle,TextContrastCheck"
+                    />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
