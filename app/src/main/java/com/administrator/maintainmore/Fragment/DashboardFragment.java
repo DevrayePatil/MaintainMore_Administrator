@@ -88,7 +88,8 @@ public class DashboardFragment extends Fragment implements NewTechnicianAdapter.
     private void DashboardCounter() {
 
 
-        db.collection("Users").addSnapshotListener((value, error) -> {
+        db.collection("Users").whereEqualTo("approvalStatus", "Approved")
+                .addSnapshotListener((value, error) -> {
             assert value != null;
             numberOfCounts = value.size();
             Log.i(TAG, "Users: " + numberOfCounts);

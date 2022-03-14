@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.administrator.maintainmore.Adapters.ServicePagerAdapter;
 import com.administrator.maintainmore.R;
+import com.administrator.maintainmore.RepairHomeAppliancesFragment;
 import com.google.android.material.tabs.TabLayout;
 
 
@@ -68,6 +69,7 @@ public class ServicesFragment extends Fragment {
 
         pagerAdapter.addFragment(new PersonalServiceFragment(),"Personal Service");
         pagerAdapter.addFragment(new HomeServiceFragment(),"Home Service");
+        pagerAdapter.addFragment(new RepairHomeAppliancesFragment(),"Repair Appliances Service");
 
         viewPager.setAdapter(pagerAdapter);
     }

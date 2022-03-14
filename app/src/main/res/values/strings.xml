@@ -60,7 +60,7 @@
     <string name="technical_role">Role</string>
     <string name="service_certificate">Service Certificate</string>
     <string name="approve">Approve</string>
-    
-    
+
+
     <string name="fcmServerKey" tools:ignore="Typos">"AAAA7LU9Gak:APA91bG9_ZeKdLS55Ft-tyeSkRLNlHLJ2iMk8-M70BuFN3z8XcGCN_6LLPkdzddQvgp4W1jkm1sGLY833gCVmrd03C2Spk-AwtZr-bOHjNF6dH-d-3dwigN11Sq-d-yl8Lc-QWwG9pzv"</string>
 </resources>
