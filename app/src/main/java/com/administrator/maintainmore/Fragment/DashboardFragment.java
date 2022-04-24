@@ -3,6 +3,7 @@ package com.administrator.maintainmore.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.administrator.maintainmore.Adapters.NewTechnicianAdapter;
 import com.administrator.maintainmore.ApprovalStatusActivity;
 import com.administrator.maintainmore.Models.NewTechnicianModal;
 import com.administrator.maintainmore.R;
+import com.administrator.maintainmore.ReportActivity;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -32,6 +34,8 @@ public class DashboardFragment extends Fragment implements NewTechnicianAdapter.
     TextView displayNumberOfBookings;
     RecyclerView recyclerView_new_users;
 
+    CardView cardReport;
+
 
     FirebaseFirestore db;
 
@@ -40,6 +44,7 @@ public class DashboardFragment extends Fragment implements NewTechnicianAdapter.
     }
 
     int numberOfCounts;
+
 
     ArrayList<NewTechnicianModal> newTechnicianModals = new ArrayList<>();
 
@@ -62,6 +67,8 @@ public class DashboardFragment extends Fragment implements NewTechnicianAdapter.
         displayNumberOfBookings = view.findViewById(R.id.displayNumberOfBookings);
         recyclerView_new_users = view.findViewById(R.id.recyclerView_new_users);
 
+        cardReport = view.findViewById(R.id.cardReport);
+
 
         DashboardCounter();
 
@@ -82,13 +89,17 @@ public class DashboardFragment extends Fragment implements NewTechnicianAdapter.
 
 
 
+        cardReport.setOnClickListener(v -> startActivity(new Intent(requireActivity(),ReportActivity.class)));
+
+
+
         return view;
     }
 
     private void DashboardCounter() {
 
 
-        db.collection("Users").whereEqualTo("approvalStatus", "Approved")
+        db.collection("Users")
                 .addSnapshotListener((value, error) -> {
             assert value != null;
             numberOfCounts = value.size();
@@ -96,7 +107,8 @@ public class DashboardFragment extends Fragment implements NewTechnicianAdapter.
             displayNumberOfUsers.setText(String.valueOf(numberOfCounts));
         });
 
-        db.collection("Technicians").addSnapshotListener((value, error) -> {
+        db.collection("Technicians").whereEqualTo("approvalStatus", "Approved")
+                .addSnapshotListener((value, error) -> {
             assert value != null;
             numberOfCounts = value.size();
             Log.i(TAG, "Technicians: " + numberOfCounts);

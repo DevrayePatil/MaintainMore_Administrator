@@ -22,16 +22,32 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/drawable/ic_home.xml" value="0.198" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/drawable/ic_info.xml" value="0.198" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/drawable/ic_launcher_background.xml" value="0.198" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/drawable/ic_rupee.xml" value="0.198" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/drawable/ic_search.xml" value="0.198" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/drawable/ic_verified_user.xml" value="0.198" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/drawable/placeholder_image.xml" value="0.152" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_appoint_technician.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_approval_status.xml" value="0.20512820512820512" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_certificate_view.xml" value="0.20512820512820512" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_login.xml" value="0.11041666666666666" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_report.xml" value="0.25" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_report_details.xml" value="0.2359375" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_home_service.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_personal_service.xml" value="0.20512820512820512" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_services.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/card_new_technician.xml" value="0.20512820512820512" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/card_service_report.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/card_user.xml" value="0.20512820512820512" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_report_booking_cancled.xml" value="0.25" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_report_booking_completed.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_services.xml" value="0.1" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_technician.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_user.xml" value="0.20512820512820512" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_users.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/MaintainMoreAdministrator/app/src/main/res/drawable/background_botton_sheet.xml" value="0.26614583333333336" />

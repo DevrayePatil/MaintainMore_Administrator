@@ -9,12 +9,12 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicePagerAdapter extends FragmentPagerAdapter {
+public class PagerAdapter extends FragmentPagerAdapter {
 
     private List<Fragment> fragmentList = new ArrayList<>();
     private List<String> titleList = new ArrayList<>();
 
-    public ServicePagerAdapter(@NonNull FragmentManager fm) {
+    public PagerAdapter(@NonNull FragmentManager fm, int behaviorResumeOnlyCurrentFragment) {
         super(fm);
     }
 

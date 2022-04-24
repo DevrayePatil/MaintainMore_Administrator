@@ -68,7 +68,7 @@
                     android:id="@+id/editTextEmail"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/email"
+                    android:hint="@string/enter_email"
                     android:maxLines="1"
                     android:inputType="textEmailAddress"
                     tools:ignore="TextContrastCheck" />
@@ -89,7 +89,7 @@
                     android:id="@+id/editTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="@string/password"
+                    android:hint="@string/enter_password"
                     android:maxLines="1"
                     android:inputType="textPassword"
                     tools:ignore="TextContrastCheck" />

@@ -1,7 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">MaintainMore(Administrator)</string>
-    <string name="password">Enter your Password</string>
-    <string name="email">"Enter your Email "</string>
+    <string name="app_name">Admin</string>
+
+    <string name="enter_password">Enter your Password</string>
+    <string name="enter_email">"Enter your Email "</string>
     <string name="login">Login</string>
     <string name="dashboard">Dashboard</string>
     <string name="todo">TODO</string>
@@ -9,7 +10,7 @@
     <string name="search">Search</string>
     <string name="users">Users</string>
     <string name="profile">Profile</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="home_fragment">Home Fragment</string>
     <string name="profile_fragment">Profile Fragment</string>
@@ -63,4 +64,15 @@
 
 
     <string name="fcmServerKey" tools:ignore="Typos">"AAAA7LU9Gak:APA91bG9_ZeKdLS55Ft-tyeSkRLNlHLJ2iMk8-M70BuFN3z8XcGCN_6LLPkdzddQvgp4W1jkm1sGLY833gCVmrd03C2Spk-AwtZr-bOHjNF6dH-d-3dwigN11Sq-d-yl8Lc-QWwG9pzv"</string>
+    <string name="report">Report</string>
+    <string name="user_details">User Details</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="technician_details">Technician Details</string>
+    <string name="service_details">Service Details</string>
+    <string name="total_bookings">Total Bookings</string>
+    <string name="total_amount">Total Amount</string>
+    <string name="booking_date">Booking Date</string>
+    <string name="booking_time">Booking Time</string>
+    <string name="admin">Admin Center</string>
 </resources>

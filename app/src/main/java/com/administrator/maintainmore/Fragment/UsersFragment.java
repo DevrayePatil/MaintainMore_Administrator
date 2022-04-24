@@ -4,13 +4,14 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.administrator.maintainmore.Adapters.ServicePagerAdapter;
+import com.administrator.maintainmore.Adapters.PagerAdapter;
 import com.administrator.maintainmore.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -65,7 +66,7 @@ public class UsersFragment extends Fragment {
 
     private void setViewPager(ViewPager viewPager) {
 
-        ServicePagerAdapter pagerAdapter = new ServicePagerAdapter(getChildFragmentManager());
+        PagerAdapter pagerAdapter = new PagerAdapter(getChildFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
         pagerAdapter.addFragment(new UserFragment(),"Users");
         pagerAdapter.addFragment(new TechnicianFragment(),"Technician");
