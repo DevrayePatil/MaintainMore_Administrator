@@ -13,7 +13,6 @@ import android.view.ViewGroup;
 
 import com.administrator.maintainmore.Adapters.PagerAdapter;
 import com.administrator.maintainmore.R;
-import com.administrator.maintainmore.RepairHomeAppliancesFragment;
 import com.google.android.material.tabs.TabLayout;
 
 

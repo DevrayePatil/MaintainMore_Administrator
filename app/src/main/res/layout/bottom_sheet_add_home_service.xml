@@ -3,12 +3,313 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".BottomSheetFragments.AddHomeService">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_margin="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/bottomSheetHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/bottomSheetBody"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/bottomSheetIndicatorBackground"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_margin="5dp"
+                android:gravity="center">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/bottomSheetIndicator"
+                    android:layout_width="50dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/todo"
+                    app:cardBackgroundColor="#BCBCBC"
+                    app:cardCornerRadius="4dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textViewAddServices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/add_personal_service"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/bottomSheetBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/bottomSheetFooter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/bottomSheetHeader">
+
+            <LinearLayout
+                android:id="@+id/serviceName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/normal_half_margin"
+                android:paddingBottom="@dimen/normal_half_margin"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:text="@string/service_name"
+                    android:textSize="16sp" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/editText_serviceName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="2"
+                    android:autofillHints="Enter Service Name"
+                    android:background="@drawable/bg_edit_text"
+                    android:inputType="textPersonName"
+                    android:padding="10dp"
+                    tools:ignore="LabelFor,SpeakableTextPresentCheck,
+                    TouchTargetSizeCheck" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/descriptionLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/normal_half_margin"
+                android:paddingBottom="@dimen/normal_half_margin"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill_vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:minWidth="150dp"
+                    android:text="@string/service_description"
+                    android:textSize="@dimen/bottom_sheet_text_size"
+                    />
+
+                <EditText
+                    android:id="@+id/editText_serviceDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/bg_edit_text"
+                    android:gravity="top"
+                    android:hint="@string/service_description"
+                    android:inputType="text"
+                    android:importantForAutofill="no"
+                    android:padding="10dp"
+                    tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck,
+                    DuplicateSpeakableTextCheck,TextContrastCheck"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/priseLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/normal_half_margin"
+                android:paddingBottom="@dimen/normal_half_margin"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/textViewPrise"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:minWidth="150dp"
+                    android:text="@string/service_time"
+                    android:textSize="@dimen/bottom_sheet_text_size" />
+
+                <EditText
+                    android:id="@+id/editText_requiredTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="2"
+                    android:background="@drawable/bg_edit_text"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    tools:ignore="LabelFor,TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/timeLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/normal_half_margin"
+                android:paddingBottom="@dimen/normal_half_margin"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/textViewTime"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:minWidth="150dp"
+                    android:text="@string/service_price"
+                    android:textSize="@dimen/bottom_sheet_text_size" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:focusable="true"
+                    app:boxStrokeWidthFocused="2dp"
+                    app:boxStrokeColor="#0081F3"
+                    android:layout_marginStart="@dimen/normal_margin"
+                    app:startIconDrawable="@drawable/ic_rupee"
+                    >
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editText_servicePrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:cursorVisible="true"
+                        android:inputType="number"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/iconLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/serviceIcon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/placeholder_image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/buttonChooseIcon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#0081F3"
+                    android:text="@string/choose_icon"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TextContrastCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/backgroundImageLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/serviceBackgroundImage"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/placeholder_image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/buttonChooseBackgroundImage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#0081F3"
+                    android:text="@string/choose_images"
+                    android:textAllCaps="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TextContrastCheck" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/bottomSheetFooter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottomSheetBody">
+
+            <Button
+                android:id="@+id/buttonCancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/design_default_color_error"
+                android:text="@string/cancel"
+                android:textAllCaps="false"
+                tools:ignore="ButtonStyle,TouchTargetSizeCheck" />
+
+            <Button
+                android:id="@+id/buttonSave"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/design_default_color_primary"
+                android:text="@string/save"
+                android:textAllCaps="false"
+                tools:ignore="ButtonStyle,TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

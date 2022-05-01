@@ -33,7 +33,7 @@ import java.util.Map;
 import java.util.UUID;
 
 
-public class AddHomeService extends BottomSheetDialogFragment {
+public class AddRepairHomeAppliances extends BottomSheetDialogFragment {
 
     private static final int IMAGE_REQUEST_ID = 1;
     private static final int BACKGROUND_IMAGE_REQUEST_ID = 2;
@@ -55,23 +55,24 @@ public class AddHomeService extends BottomSheetDialogFragment {
     ImageView serviceIcon,serviceBackgroundImage;
     EditText editTextServiceName, editTextServiceDescription, editTextRequiredTime, editTextServicePrice;
 
-    public AddHomeService() {
+    public AddRepairHomeAppliances() {
         // Required empty public constructor
     }
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.bottom_sheet_add_home_service, container, false);
+        View view = inflater.inflate(R.layout.bottom_sheet_add_home_appliances, container, false);
 
         db = FirebaseFirestore.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
 
-        documentReference = db.collection("Home Services").document();
+        documentReference = db.collection("Repair Appliance Services").document();
         documentID = documentReference.getId();
 
         Log.i(TAG, documentID);
@@ -138,7 +139,7 @@ public class AddHomeService extends BottomSheetDialogFragment {
         }
 
 
-        service.put("serviceType","Personal Service");
+        service.put("serviceType","Repair Appliance Service");
         service.put("serviceName",serviceName);
         service.put("serviceDescription",serviceDescription);
         service.put("requiredTime",requiredTime);

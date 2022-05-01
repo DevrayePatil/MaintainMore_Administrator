@@ -140,6 +140,7 @@ public class HomeServiceFragment extends Fragment
 
         intent.putExtra("serviceID", ID);
         intent.putExtra("serviceName", name);
+        intent.putExtra("whichService", "Home Services");
 
         startActivity(intent);
     }

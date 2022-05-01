@@ -54,7 +54,7 @@ public class UpdateServiceActivity extends AppCompatActivity {
 
 
 
-    String serviceID, serviceName;
+    String serviceID, serviceName, whichService;
 
 
     @Override
@@ -70,8 +70,10 @@ public class UpdateServiceActivity extends AppCompatActivity {
         firebaseStorage = FirebaseStorage.getInstance();
         storageReference = firebaseStorage.getReference();
 
+        GetDataFromCard();
 
-        reference = db.collection("Personal Services").document();
+
+        reference = db.collection(whichService).document();
 
 
         editServiceName = findViewById(R.id.editServiceName);
@@ -94,7 +96,6 @@ public class UpdateServiceActivity extends AppCompatActivity {
         buttonCancel.setOnClickListener(view -> finish());
         buttonSave.setOnClickListener(view -> UpdateServiceInformation());
 
-        GetDataFromCard();
         setSupportActionBar(toolbar);
 
         GetServiceDetails();
@@ -125,7 +126,7 @@ public class UpdateServiceActivity extends AppCompatActivity {
         String requiredTime = Objects.requireNonNull(editRequiredTime.getText()).toString();
         String servicePrice = Objects.requireNonNull(editServicePrice.getText()).toString();
 
-        db.collection("Personal Services").document(serviceID).update(
+        db.collection(whichService).document(serviceID).update(
                 "serviceName", serviceName,
                 "serviceDescription", serviceDescription,
                 "requiredTime", requiredTime,
@@ -142,7 +143,7 @@ public class UpdateServiceActivity extends AppCompatActivity {
 
 
     private void GetServiceDetails() {
-        db.collection("Personal Services").document(serviceID)
+        db.collection(whichService).document(serviceID)
                 .addSnapshotListener((value, error) -> {
             if (error != null) {
                 Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
@@ -177,6 +178,7 @@ public class UpdateServiceActivity extends AppCompatActivity {
         serviceID = intent.getStringExtra("serviceID");
         serviceName = intent.getStringExtra("serviceName");
 
+        whichService = intent.getStringExtra("whichService");
         Log.i(TAG,"ID: " + serviceID);
     }
 

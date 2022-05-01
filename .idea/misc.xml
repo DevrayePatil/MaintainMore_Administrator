@@ -36,6 +36,7 @@
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_report.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/activity_report_details.xml" value="0.2359375" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_home_appliances.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_home_service.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_personal_service.xml" value="0.20512820512820512" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/bottom_sheet_add_services.xml" value="0.25" />
@@ -43,7 +44,9 @@
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/card_service_report.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/card_user.xml" value="0.20512820512820512" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_dashboard.xml" value="0.25" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_home_service.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_repair_home_appliances.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_report_booking_cancled.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_report_booking_completed.xml" value="0.25" />
         <entry key="..\:/DYPIMCAM/Second_Year/III_Sem/Mini_project/AllApps/MaintainMoreAdministrator/app/src/main/res/layout/fragment_services.xml" value="0.1" />

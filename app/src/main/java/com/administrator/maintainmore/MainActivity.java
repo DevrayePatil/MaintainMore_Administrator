@@ -18,7 +18,7 @@ import android.view.Gravity;
 import android.view.ViewGroup;
 import android.view.Window;
 
-import com.administrator.maintainmore.BottomSheetFragments.AddHomeAppliances;
+import com.administrator.maintainmore.BottomSheetFragments.AddRepairHomeAppliances;
 import com.administrator.maintainmore.BottomSheetFragments.AddHomeService;
 import com.administrator.maintainmore.BottomSheetFragments.AddPersonalService;
 import com.administrator.maintainmore.Fragment.DashboardFragment;
@@ -29,18 +29,24 @@ import com.administrator.maintainmore.Fragment.UsersFragment;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivityInfo";
-    String notificationToken = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE6MTAxNjY1Mjk2MjIxNzphbmRyb2lkOjk4MjEzNTU2MmYyZmNkZTY4ZTRjYjgiLCJleHAiOjE2NDYzMjc4MjcsImZpZCI6ImZ2VTJNbGhoUVN5a0xlVURZaHpkXy0iLCJwcm9qZWN0TnVtYmVyIjoxMDE2NjUyOTYyMjE3fQ.AB2LPV8wRgIhAJORWkG9cG09GlFol8klrcMPBqKU34w40jqV8p5YaPS0AiEAmDcTNzDQkGj6ZtjnjAGoSIwNl5R8g1q7WmaebVH-wcI";
+    String notificationToken = "eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IjE6MTAxNjY" +
+            "1Mjk2MjIxNzphbmRyb2lkOjk4MjEzNTU2MmYyZmNkZTY4ZTRjYjgiLCJleHAiOjE2NDYzMjc4MjcsImZp" +
+            "ZCI6ImZ2VTJNbGhoUVN5a0xlVURZaHpkXy0iLCJwcm9qZWN0TnVtYmVyIjoxMDE2NjUyOTYyMjE3fQ.AB2LP" +
+            "V8wRgIhAJORWkG9cG09GlFol8klrcMPBqKU34w40jqV8p5YaPS0AiEAmDcTNzDQkGj6ZtjnjAGoSIwNl5R8g1q7WmaebVH-wcI";
 
 
     BottomNavigationView bottomNavigationView;
     FloatingActionButton buttonFab;
 
+    FirebaseFirestore db;
 
+    int numberOfRegistrations;
 
 
 
@@ -48,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        db = FirebaseFirestore.getInstance();
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
@@ -63,15 +71,26 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.getMenu().getItem(2).setEnabled(false);
         bottomNavigationView.setOnNavigationItemSelectedListener(itemSelected);
 
-        buttonFab.setOnClickListener(view -> directGo());
+        buttonFab.setOnClickListener(view -> AddServicesBottomSheet());
 
 //        Create Badge on the bottomNavigationView
-        BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.dashboard);
-        badgeDrawable.setBackgroundColor(Color.RED);
-        badgeDrawable.setBadgeTextColor(Color.WHITE);
-        badgeDrawable.setMaxCharacterCount(2);
-        badgeDrawable.setNumber(10);
-        badgeDrawable.setVisible(true);
+
+        db.collection("Technicians").whereEqualTo("approvalStatus", "Registered")
+                .addSnapshotListener((value, error) -> {
+                    assert value != null;
+                    numberOfRegistrations = value.size();
+                    Log.i(TAG, "Technicians: " + numberOfRegistrations);
+
+                    BadgeDrawable badgeDrawable = bottomNavigationView.getOrCreateBadge(R.id.dashboard);
+                    badgeDrawable.setBackgroundColor(Color.RED);
+                    badgeDrawable.setBadgeTextColor(Color.WHITE);
+                    badgeDrawable.setMaxCharacterCount(2);
+                    badgeDrawable.setNumber(numberOfRegistrations);
+
+                    badgeDrawable.setVisible(numberOfRegistrations != 0);
+
+                });
+
 
 
 
@@ -81,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
 
-    private void directGo() {
-        AddPersonalService addPersonalService = new AddPersonalService();
-        addPersonalService.show(getSupportFragmentManager(), addPersonalService.getTag());
-    }
+//  Comments  private void directGo() {
+//        AddPersonalService addPersonalService = new AddPersonalService();
+//        addPersonalService.show(getSupportFragmentManager(), addPersonalService.getTag());
+//    }
 
     private void AddServicesBottomSheet() {
 
@@ -109,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             dialog.dismiss();
         });
         homeAppliance.setOnClickListener(view1 -> {
-            AddHomeAppliances addServices = new AddHomeAppliances();
+            AddRepairHomeAppliances addServices = new AddRepairHomeAppliances();
             addServices.show(getSupportFragmentManager(),addServices.getTag());
             dialog.dismiss();
         });

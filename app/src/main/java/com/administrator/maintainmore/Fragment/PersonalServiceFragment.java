@@ -142,6 +142,7 @@ public class PersonalServiceFragment extends Fragment
         Intent intent = new Intent(getActivity(), UpdateServiceActivity.class);
 
         intent.putExtra("serviceID", ID);
+        intent.putExtra("whichService", "Personal Services");
         intent.putExtra("serviceName", name);
 
         startActivity(intent);
