@@ -75,4 +75,5 @@
     <string name="booking_date">Booking Date</string>
     <string name="booking_time">Booking Time</string>
     <string name="admin">Admin Center</string>
+    <string name="delete_info">Swipe right to delete service</string>
 </resources>

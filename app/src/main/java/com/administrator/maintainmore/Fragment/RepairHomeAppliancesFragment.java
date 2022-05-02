@@ -2,9 +2,14 @@ package com.administrator.maintainmore.Fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,10 +22,14 @@ import com.administrator.maintainmore.Adapters.RepairApplianceServiceAdapter;
 import com.administrator.maintainmore.Models.RepairApplianceCardModal;
 import com.administrator.maintainmore.R;
 import com.administrator.maintainmore.UpdateServiceActivity;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+
+import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
 public class RepairHomeAppliancesFragment extends Fragment
         implements RepairApplianceServiceAdapter.ViewHolder.OnRepairApplianceServiceClickListener {
@@ -30,6 +39,7 @@ public class RepairHomeAppliancesFragment extends Fragment
 
 
     RecyclerView recyclerView_repairApplianceServices;
+    CoordinatorLayout coordinatorLayout;
 
     FirebaseFirestore db;
 
@@ -38,6 +48,7 @@ public class RepairHomeAppliancesFragment extends Fragment
     }
 
     ArrayList<RepairApplianceCardModal> repairApplianceCardModals = new ArrayList<>();
+    ArrayList<RepairApplianceCardModal> deletedService = new ArrayList<>();
 
 
     @Override
@@ -49,6 +60,7 @@ public class RepairHomeAppliancesFragment extends Fragment
         db = FirebaseFirestore.getInstance();
 
         recyclerView_repairApplianceServices = view.findViewById(R.id.recycleView_repairApplianceServices);
+        coordinatorLayout = view.findViewById(R.id.coordinatorLayout);
 
 
         db.collection("Repair Appliance Services").addSnapshotListener((value, error) -> {
@@ -67,7 +79,8 @@ public class RepairHomeAppliancesFragment extends Fragment
                 );
             }
 
-            RepairApplianceServiceAdapter repairApplianceServiceAdapter = new RepairApplianceServiceAdapter(repairApplianceCardModals, getContext(), this);
+            RepairApplianceServiceAdapter repairApplianceServiceAdapter =
+                    new RepairApplianceServiceAdapter(repairApplianceCardModals, getContext(), this);
             recyclerView_repairApplianceServices.setAdapter(repairApplianceServiceAdapter);
 
         });
@@ -75,8 +88,66 @@ public class RepairHomeAppliancesFragment extends Fragment
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView_repairApplianceServices.setLayoutManager(linearLayoutManager);
 
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(recyclerView_repairApplianceServices);
+
         return view;
     }
+
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder,
+                              @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
+
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            int position = viewHolder.getAdapterPosition();
+            String service = repairApplianceCardModals.get(position).getServiceID();
+            String serviceName = repairApplianceCardModals.get(position).getServiceName();
+
+            switch (direction){
+                case ItemTouchHelper.LEFT:
+
+                    deletedService.clear();
+                    deletedService.add(repairApplianceCardModals.remove(position));
+
+                    db.collection("Repair Appliance Services").document(service).delete()
+                            .addOnSuccessListener(unused ->{
+                                Snackbar snackbar = Snackbar.make(coordinatorLayout, serviceName + " Service Deleted",
+                                        Snackbar.LENGTH_LONG);
+                                snackbar.setAction("Undo", v ->
+                                    db.collection("Repair Appliance Services").document(service)
+                                            .set(deletedService.get(0))
+                                );
+                                snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                                snackbar.show();
+
+                            });
+
+                    break;
+                case  ItemTouchHelper.RIGHT:
+
+                    break;
+            }
+        }
+
+        @Override
+        public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView,
+                                @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY,
+                                int actionState, boolean isCurrentlyActive) {
+
+            new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.color_danger))
+                    .addActionIcon(R.drawable.ic_delete)
+                    .create()
+                    .decorate();
+            super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+        }
+    };
+
 
     @SuppressLint("LongLogTag")
     @Override

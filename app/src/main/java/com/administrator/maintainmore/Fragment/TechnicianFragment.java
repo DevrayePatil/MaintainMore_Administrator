@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.administrator.maintainmore.Adapters.TechniciansAdapter;
 import com.administrator.maintainmore.Models.TechniciansModal;
@@ -42,16 +43,17 @@ public class TechnicianFragment extends Fragment {
 
         recyclerView_technician = view.findViewById(R.id.recyclerView_technician);
 
-        db.collection("Technicians").addSnapshotListener((value, error) -> {
+        db.collection("Technicians").whereEqualTo("approvalStatus", "Approved").addSnapshotListener((value, error) -> {
             techniciansModals.clear();
             assert value != null;
             for (DocumentSnapshot snapshot: value){
-                techniciansModals.add(new TechniciansModal(snapshot.getId(),snapshot.getString("name"), snapshot.getString("email")
-                        ,snapshot.getString("imageUrl")));
+                techniciansModals.add(new TechniciansModal(snapshot.getId(),snapshot.getString("name"),
+                        snapshot.getString("email"),
+                        snapshot.getString("imageUrl")));
             }
+            TechniciansAdapter techniciansAdapter = new TechniciansAdapter(techniciansModals, getContext());
+            recyclerView_technician.setAdapter(techniciansAdapter);
         });
-        TechniciansAdapter techniciansAdapter = new TechniciansAdapter(techniciansModals, getContext());
-        recyclerView_technician.setAdapter(techniciansAdapter);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView_technician.setLayoutManager(linearLayoutManager);

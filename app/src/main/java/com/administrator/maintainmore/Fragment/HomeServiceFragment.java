@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -22,10 +23,14 @@ import com.administrator.maintainmore.Adapters.HomeServiceCardAdapter;
 import com.administrator.maintainmore.Models.HomeServiceCardModal;
 import com.administrator.maintainmore.R;
 import com.administrator.maintainmore.UpdateServiceActivity;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
@@ -42,8 +47,13 @@ public class HomeServiceFragment extends Fragment
         // Required empty public constructor
     }
     RecyclerView recyclerView_homeServices;
+    CoordinatorLayout coordinatorLayout;
 
     ArrayList<HomeServiceCardModal> homeServiceCardModals = new ArrayList<>();
+    ArrayList<HomeServiceCardModal> deletedService = new ArrayList<>();
+    Map<String, Object> undoDocument;
+    DocumentSnapshot documentSnapshot;
+
 
 
     @Override
@@ -55,6 +65,7 @@ public class HomeServiceFragment extends Fragment
         db = FirebaseFirestore.getInstance();
 
         recyclerView_homeServices = view.findViewById(R.id.recycleView_homeServices);
+        coordinatorLayout = view.findViewById(R.id.coordinatorLayout);
 
 
         db.collection("Home Services").addSnapshotListener((value, error) -> {
@@ -97,14 +108,28 @@ public class HomeServiceFragment extends Fragment
 
             int position = viewHolder.getAdapterPosition();
             String service = homeServiceCardModals.get(position).getServiceID();
+            String serviceName = homeServiceCardModals.get(position).getServiceName();
 
             switch (direction){
                 case ItemTouchHelper.LEFT:
-                    homeServiceCardModals.remove(position);
-                    db.collection("Personal Services").document(service).delete()
-                            .addOnSuccessListener(unused ->
-                                    Toast.makeText(getActivity(), "ServiceDeleted", Toast.LENGTH_SHORT).show()
-                            );
+                    deletedService.clear();
+                    deletedService.add(homeServiceCardModals.remove(position));
+
+
+                    db.collection("Home Services").document(service).delete()
+                            .addOnSuccessListener(unused ->{
+                                Snackbar snackbar = Snackbar.make(coordinatorLayout,serviceName + " Service Deleted", Snackbar.LENGTH_LONG);
+                                snackbar.setAction("Undo", v ->
+                                    db.collection("Home Services").document(service).set(deletedService.get(0))
+                                );
+                                snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                                snackbar.show();
+                            });
+
+                    Log.i(TAG, String.valueOf(deletedService.get(0).getServiceName()));
+
+
+
                     break;
                 case  ItemTouchHelper.RIGHT:
 
@@ -117,7 +142,7 @@ public class HomeServiceFragment extends Fragment
                                 @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
 
             new RecyclerViewSwipeDecorator.Builder(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.color_danger))
+                    .addSwipeLeftBackgroundColor(ContextCompat.getColor(requireActivity(), R.color.color_red))
                     .addActionIcon(R.drawable.ic_delete)
                     .create()
                     .decorate();
@@ -126,7 +151,7 @@ public class HomeServiceFragment extends Fragment
     };
 
 
-    @SuppressLint("LongLogTag")
+    @SuppressLint({"LongLogTag", "ShowToast"})
     @Override
     public void onHomeServiceCardClick(int position) {
 
@@ -143,5 +168,7 @@ public class HomeServiceFragment extends Fragment
         intent.putExtra("whichService", "Home Services");
 
         startActivity(intent);
+
+
     }
 }

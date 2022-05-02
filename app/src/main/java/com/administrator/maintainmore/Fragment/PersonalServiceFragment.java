@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -16,12 +17,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.administrator.maintainmore.Adapters.PersonalServiceCardAdapter;
 import com.administrator.maintainmore.Models.PersonalServiceCardModal;
 import com.administrator.maintainmore.R;
 import com.administrator.maintainmore.UpdateServiceActivity;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -37,6 +39,7 @@ public class PersonalServiceFragment extends Fragment
 
 
     RecyclerView recyclerView_personalServices;
+    CoordinatorLayout coordinatorLayout;
 
     FirebaseFirestore db;
 
@@ -45,6 +48,7 @@ public class PersonalServiceFragment extends Fragment
     }
 
     ArrayList<PersonalServiceCardModal> personalServiceCardModal = new ArrayList<>();
+    ArrayList<PersonalServiceCardModal> deletedService = new ArrayList<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -55,6 +59,7 @@ public class PersonalServiceFragment extends Fragment
         db = FirebaseFirestore.getInstance();
 
         recyclerView_personalServices = view.findViewById(R.id.recycleView_personalServices);
+        coordinatorLayout = view.findViewById(R.id.coordinatorLayout);
 
 
         db.collection("Personal Services").addSnapshotListener((value, error) -> {
@@ -100,14 +105,24 @@ public class PersonalServiceFragment extends Fragment
 
             int position = viewHolder.getAdapterPosition();
             String service = personalServiceCardModal.get(position).getServiceID();
+            String serviceName = personalServiceCardModal.get(position).getServiceName();
 
             switch (direction){
                 case ItemTouchHelper.LEFT:
-                    personalServiceCardModal.remove(position);
+
+                    deletedService.clear();
+                    deletedService.add(personalServiceCardModal.remove(position));
+
                     db.collection("Personal Services").document(service).delete()
-                            .addOnSuccessListener(unused ->
-                                Toast.makeText(getActivity(), "Service Deleted", Toast.LENGTH_SHORT).show()
-                    );
+                            .addOnSuccessListener(unused ->{
+                                Snackbar snackbar = Snackbar.make(coordinatorLayout, serviceName + " Service Deleted", Snackbar.LENGTH_LONG);
+                                snackbar.setAction("Undo", v ->
+                                    db.collection("Personal Services").document(service).set(deletedService.get(0))
+                                );
+                                snackbar.setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE);
+                                snackbar.show();
+                            });
+
                     break;
                 case  ItemTouchHelper.RIGHT:
 

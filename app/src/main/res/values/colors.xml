@@ -15,4 +15,6 @@
 
 
     <color name="color_danger">#ff0e0e</color>
+
+    <color name="color_custom_white">#f2f2f2</color>
 </resources>
